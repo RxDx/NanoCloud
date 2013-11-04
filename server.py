@@ -7,20 +7,23 @@ import sys
 
 HOST = ''				# Endereco IP do Servidor
 PORT = 5000				# Porta que o Servidor esta
-tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-tcp.bind((HOST, PORT))
-tcp.listen(1)
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind((HOST, PORT))
+server.listen(5)
 while True:
-	con, cliente = tcp.accept()
+	con, portal = server.accept()
 	pid = os.fork()
 	if pid == 0:
-		tcp.close()
-		print 'Conectado por', cliente
-		while True:
+		server.close()
+		print 'Conectado por', portal
+		aFile = open('./server_in.txt', 'wb')
+		msg = con.recv(1024)
+		while msg:
+			aFile.write(msg)
+			print portal, msg
 			msg = con.recv(1024)
-			if not msg: break
-			print cliente, msg
-		print 'Finalizando conexao do cliente', cliente
+			#if not msg: break
+		print 'Finalizando conexao do cliente', portal
 		con.close()
 		sys.exit(0)
 	else:
