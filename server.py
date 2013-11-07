@@ -4,6 +4,7 @@
 import socket
 import os
 import sys
+import subprocess
 
 HOST = ''				# Endereco IP do Servidor
 PORT = 5000				# Porta que o Servidor esta
@@ -23,6 +24,13 @@ while True:
 			print portal, msg
 			msg = con.recv(1024)
 			#if not msg: break
+		aFile.close()
+
+		p = subprocess.Popen(["python", "server_in.txt"], stdout=subprocess.PIPE)
+		cmdOutput, err = p.communicate()
+
+		print cmdOutput
+
 		print 'Finalizando conexao do cliente', portal
 		con.close()
 		sys.exit(0)
