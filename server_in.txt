@@ -1,5 +1,0 @@
-#!/usr/bin/env python
-i=0
-while (i<3):
-    print 'HelloWorld!'
-    i=i+1
