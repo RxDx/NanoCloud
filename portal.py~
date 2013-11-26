@@ -9,7 +9,7 @@ import os
 import sys
 
 HOST = ''				# Portal IP
-PORT = 5001				# Portal Port
+PORT = 5002				# Portal Port
 portal = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 portal.bind((HOST, PORT))
 portal.listen(5)

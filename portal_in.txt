@@ -1,0 +1,5 @@
+#!/usr/bin/env python
+i=0
+while (i<=0):
+    print '430! ta atrasado';
+    i=i+1;

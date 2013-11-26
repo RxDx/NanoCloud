@@ -6,7 +6,7 @@
 
 import socket
 HOST = '127.0.0.1'		# Portal IP
-PORT = 5001				# Portal Port
+PORT = 5002				# Portal Port
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect((HOST, PORT))
