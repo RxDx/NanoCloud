@@ -7,7 +7,7 @@ import sys
 import subprocess
 
 HOST = ''				# Endereco IP do Servidor
-PORT = 5004				# Porta que o Servidor esta
+PORT = 4200				# Porta que o Servidor esta
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((HOST, PORT))
 server.listen(5)
@@ -25,8 +25,8 @@ while True:
 		while msg:
 			aFile.write(msg)
 			print portal, msg
-			msg = con.recv(1024)
 			if msg[-3:] == 'FIM': break
+			msg = con.recv(1024)
 		aFile.close()
 		print 'Arquivo fonte recebido com sucesso do Portal: {}. \n'.format(portal)
 		# FILE RECEIVED FROM PORTAL
