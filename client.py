@@ -6,11 +6,13 @@
 
 import socket
 import sys
+import os
+
 if len(sys.argv) != 2:
 	print 'Modo correto de execução: ./client arquivo'
 	sys.exit()
-HOST = '127.0.0.1'		# Portal IP
-PORT = 5001				# Portal Port
+HOST = 'caporal.c3sl.ufpr.br'		# Portal IP
+PORT = 5011				# Portal Port
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect((HOST, PORT))
@@ -33,8 +35,12 @@ aFile = open('./client_in.txt', 'wb')
 msg = client.recv(1024)
 while msg:
 	aFile.write(msg)
-	print 'Resposta do portal: {}'.format(msg)
-	if msg[-3:] == 'FIM': break
+	#print 'Resposta do portal: {}'.format(msg)
+	if msg[-3:] == 'FIM': 
+		aFile.seek(-3, os.SEEK_END)
+		aFile.truncate()
+		break
+	if msg != 'FIM': print 'Resposta do portal: {}'.format(msg)
 	msg = client.recv(1024)
 aFile.close()
 print 'Resposta do Portal recebida com sucesso.'
