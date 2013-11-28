@@ -8,9 +8,8 @@ import socket
 import os
 import sys
 import random
-import subprocess
 
-SERVER_PORT = 4224 # ALL THE SERVERS RUN ON THE SAME PORT
+SERVER_PORT = 4218 # ALL THE SERVERS RUN ON THE SAME PORT
 SERVER_1 = 'macalan.c3sl.ufpr.br'
 SERVER_2 = 'priorat.c3sl.ufpr.br'
 SERVER_3 = 'bowmore.c3sl.ufpr.br'
@@ -25,13 +24,7 @@ def connectToServer():
 	rr_count_int = int(rr_count)
 
 	if sys.argv[1] == '1':
-		random.seed(256)
-		p = subprocess.Popen(["echo", "$[ 0 + $[ RANDOM % 3]]"], stdout=subprocess.PIPE)
-		cmdOutput, err = p.communicate()
-		print "aqui ta a saida: ", cmdOutput
-		print '1', rr_count_int
-		rr_count_int = str(cmdOutput)
-		print '2',rr_count_int
+		rr_count_int = random.randint(1,256)
 		rr_count_int %= 3
 		print 'random fucking moda fucker: ', rr_count_int
 
@@ -72,7 +65,7 @@ if len(sys.argv) != 2:
 rr_count = 0
 
 HOST = ''				# Portal IP
-PORT = 5011 			# Portal Port
+PORT = 5007				# Portal Port
 portal = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 portal.bind((HOST, PORT))
 portal.listen(5)

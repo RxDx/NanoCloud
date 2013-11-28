@@ -7,7 +7,7 @@ import sys
 import subprocess
 
 HOST = ''				# Endereco IP do Servidor
-PORT = 4224				# Porta que o Servidor esta
+PORT = 4218				# Porta que o Servidor esta
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((HOST, PORT))
 server.listen(5)

@@ -12,7 +12,7 @@ if len(sys.argv) != 2:
 	print 'Modo correto de execução: ./client arquivo'
 	sys.exit()
 HOST = 'caporal.c3sl.ufpr.br'		# Portal IP
-PORT = 5011				# Portal Port
+PORT = 5007				# Portal Port
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect((HOST, PORT))
